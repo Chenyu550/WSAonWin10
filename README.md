@@ -1,24 +1,24 @@
+### 注意
+
+这不是我的作品，这是我从`别人的`[存储库](https://github.com/cinit/WSAPatch)里克隆过来的，来以防万一
+
 # Windows 10 的 WSA 补丁
 
 这是一个 WSA 补丁，可以让 WSA（Android 的 Windows 子系统）在 Windows 10 上运行。
 
 我已经在 `Windows 10 22H2 10.0.19045.2311 x64` 和 `WSA 2210.40000.7.0` 上进行了测试。
 
-### 注意
-
-这不是我的作品，这是我从`别人的`[存储库](https://github.com/cinit/WSAPatch)里克隆过来的，来以防万一
-
 ### 指示
 
 1. 获取 WSA appx zip。 您可以按照 [这里](https://github.com/LSPosed/MagiskOnWSALocal) 中的说明执行此操作
-    （您需要使用本地 WSL2 自己“构建”它）。
+    （您需要使用本地 WSL2 来自己“构建”它）。
 2. 从 Windows 11 22H2 获取“icu.dll”。 请注意，您必须使用 Windows 11 中的 icu.dll。
     Windows 10 中的 icu.dll 将无法运行。
     （我在 `original.dll.win11.22h2` 目录中制作了这些 DLL 的副本。它们由 Microsoft 进行了数字签名。）
 3. 使用此 repo 中的源代码构建 WsaPatch.dll。
     （使用 MSVC 工具链构建，而不是 MinGW 或其他工具。）
-4. 补丁icu.dll：添加WsaPatch.dll作为icu.dll的导入DLL。
-5. 将打补丁的icu.dll 和WsaPatch.dll 复制到WsaClient 目录。
+4. 修补icu.dll：添加WsaPatch.dll作为icu.dll的导入DLL。
+5. 将修补好的 icu.dll 和 WsaPatch.dll 复制到 WsaClient 目录。
 6. 修补 AppxManifest.xml：找到 `TargetDeviceFamily` 节点并将 `MinVersion` 属性更改为您的 Windows版本。
     <details>
 
@@ -29,7 +29,7 @@
 
     将 `MinVersion` 从 `10.0.22000.120` 更改为您的 Windows 版本，例如 `10.0.19045.2311`。
     </details>
-7. 补丁AppxManifest.xml：删除AppxManifest.xml中所有关于“customInstall”扩展的节点。
+7. 修补AppxManifest.xml：删除AppxManifest.xml中所有关于“customInstall”扩展的节点。
     <details>
     从 AppxManifest.xml 中删除以下内容。
 
