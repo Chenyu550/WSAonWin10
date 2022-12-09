@@ -1,5 +1,6 @@
 # Windows 10 的 WSA 补丁
 
+我从别人的`存储库`里克隆过来，以防万一出现问题
 这是一个 WSA 补丁，可以让 WSA（Android 的 Windows 子系统）在 Windows 10 上运行。
 
 我已经在 `Windows 10 22H2 10.0.19045.2311 x64` 和 `WSA 2210.40000.7.0` 上进行了测试。
@@ -15,7 +16,7 @@
     （使用 MSVC 工具链构建，而不是 MinGW 或其他工具。）
 4. 补丁icu.dll：添加WsaPatch.dll作为icu.dll的导入DLL。
 5. 将打补丁的icu.dll 和WsaPatch.dll 复制到WsaClient 目录。
-6. 修补 AppxManifest.xml：找到 `TargetDeviceFamily` 节点并将 `MinVersion` 属性更改为您的 Windows 版本。
+6. 修补 AppxManifest.xml：找到 `TargetDeviceFamily` 节点并将 `MinVersion` 属性更改为您的 Windows版本。
     <details>
 
     在 AppxManifest.xml 中找到以下行。
